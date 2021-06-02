@@ -12,7 +12,7 @@
 #    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
-#   ######################################################################## 
+#   ########################################################################
 on:
   push:
     branches:
@@ -63,7 +63,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build ort
-        id: docker_build
+        id: docker_base_build
         uses: docker/build-push-action@v2
         with:
           context: ort
