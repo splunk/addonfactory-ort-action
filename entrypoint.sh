@@ -23,6 +23,7 @@ exitCode=$?
 echo "::endgroup::"
 
 echo ::group::reports
+
 /opt/ort/bin/ort \
     report -f Excel,SpdxDocument,AsciiDocTemplate,NoticeTemplate \
     --ort-file=/workspace/.ort/analyzer/analyzer-result.json \
