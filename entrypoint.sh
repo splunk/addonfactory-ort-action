@@ -16,7 +16,8 @@
 #   ######################################################################## export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 echo ::group::analyzer
-
+rm -rf ./.ort/analyzer  || true
+rm -rf ./.ort/reports  || true
 /opt/ort/bin/ort --info analyze -f JSON -i /workspace -o /workspace/.ort/analyzer/
 exitCode=$?
 
