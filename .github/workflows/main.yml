@@ -68,7 +68,7 @@ jobs:
         with:
           context: ort
           tags: ort
-
+      - run: docker images ls
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
