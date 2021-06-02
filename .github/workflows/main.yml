@@ -39,18 +39,6 @@ jobs:
           persist-credentials: false
       - name: Install yq
         run: sudo snap install yq
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          images: ghcr.io/splunk/addonfactory-sample-scanner
-          tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern=v{{version}}
-            type=semver,pattern=v{{major}}.{{minor}}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -62,15 +50,46 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Docker meta
+        id: docker_ort_meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ghcr.io/splunk/addonfactory-sample-scanner
+          tags: |
+            type=ref,event=branch,suffix=-base
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern=v{{version}}
+            type=semver,pattern=v{{major}}.{{minor}}
+            # minimal (short sha)
+            type=sha
+            # full length sha
+            type=sha,format=long
       - name: Build ort
         id: docker_base_build
         uses: docker/build-push-action@v2
         with:
           context: ort
-          tags: ort
+          push: true
+          tags: ${{ steps.docker_ort_meta.outputs.tags }}
+          labels: ${{ steps.docker_ort_meta.outputs.labels }}
       - run: docker images ls
+
+      - name: Docker meta
+        id: docker_action_meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ghcr.io/splunk/addonfactory-sample-scanner
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern=v{{version}}
+            type=semver,pattern=v{{major}}.{{minor}}
       - name: Build and push
-        id: docker_build
+        id: docker_action_build
         uses: docker/build-push-action@v2
         with:
           context: .
