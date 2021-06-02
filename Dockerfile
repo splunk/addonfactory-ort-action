@@ -13,5 +13,6 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 #   ######################################################################## 
-FROM ort
+ARG BASE_IMAGE=ort
+FROM ${BASE_IMAGE}
 

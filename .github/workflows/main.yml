@@ -72,6 +72,8 @@ jobs:
           push: true
           tags: ${{ steps.docker_ort_meta.outputs.tags }}
           labels: ${{ steps.docker_ort_meta.outputs.labels }}
+          cache-from: type=registry,ref=${{ fromJSON(steps.docker_ort_meta.outputs.json).tags[0] }}
+          cache-to: type=inline
       - run: docker images ls
 
       - name: Docker meta
@@ -87,15 +89,18 @@ jobs:
             type=semver,pattern=v{{version}}
             type=semver,pattern=v{{major}}.{{minor}}
             type=sha
-            type=sha,format=long            
+            type=sha,format=long
       - name: Build and push
         id: docker_action_build
         uses: docker/build-push-action@v2
         with:
           context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.docker_action_meta.outputs.tags }}
+          labels: ${{ steps.docker_action_meta.outputs.labels }}
+          build-args: |
+            BASE_IMAGE: ${{ fromJSON(steps.docker_ort_meta.outputs.json).tags[0] }}
+          cache-from: type=registry,ref=${{ fromJSON(steps.docker_action_meta.outputs.json).tags[0] }}
+          cache-to: type=inline
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2.5.4
