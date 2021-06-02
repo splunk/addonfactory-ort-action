@@ -13,6 +13,9 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 #   ######################################################################## 
-ARG BASE_IMAGE=ort
-FROM ${BASE_IMAGE}
+ARG BASEIMAGE=ort
+FROM $BASEIMAGE
+
+
+RUN echo BASEIMAGE=$BASEIMAGE
 

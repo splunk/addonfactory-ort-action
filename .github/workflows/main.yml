@@ -57,11 +57,11 @@ jobs:
           images: ghcr.io/splunk/addonfactory-ort-action
           tags: |
             type=ref,event=branch,suffix=-base
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern=v{{version}}
-            type=semver,pattern=v{{major}}.{{minor}}
+            type=ref,event=pr,suffix=-base
+            type=semver,pattern={{version}},suffix=-base
+            type=semver,pattern={{major}}.{{minor}},suffix=-base
+            type=semver,pattern=v{{version}},suffix=-base
+            type=semver,pattern=v{{major}}.{{minor}},suffix=-base
             type=sha
             type=sha,format=long
       - name: Build ort
@@ -90,15 +90,16 @@ jobs:
             type=semver,pattern=v{{major}}.{{minor}}
             type=sha
             type=sha,format=long
-      - name: Build and push
+      - name: Build and push action
         id: docker_action_build
         uses: docker/build-push-action@v2
         with:
           context: .
+          push: true
           tags: ${{ steps.docker_action_meta.outputs.tags }}
           labels: ${{ steps.docker_action_meta.outputs.labels }}
           build-args: |
-            BASE_IMAGE: ${{ fromJSON(steps.docker_ort_meta.outputs.json).tags[0] }}
+            BASEIMAGE=${{ fromJSON(steps.docker_ort_meta.outputs.json).tags[0] }}
           cache-from: type=registry,ref=${{ fromJSON(steps.docker_action_meta.outputs.json).tags[0] }}
           cache-to: type=inline
 
