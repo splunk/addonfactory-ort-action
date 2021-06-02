@@ -17,5 +17,6 @@ ARG BASEIMAGE=ort
 FROM $BASEIMAGE
 
 
-RUN echo BASEIMAGE=$BASEIMAGE
+COPY custom root/.ort
 
+ENTRYPOINT ["/entrypoint.sh"]
