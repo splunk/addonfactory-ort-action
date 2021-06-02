@@ -74,7 +74,7 @@ jobs:
           labels: ${{ steps.docker_ort_meta.outputs.labels }}
           cache-from: type=registry,ref=${{ fromJSON(steps.docker_ort_meta.outputs.json).tags[0] }}
           cache-to: type=inline
-      - run: docker images ls
+      - run: docker pull adoptopenjdk:11-jre-hotspot-bionic
 
       - name: Docker meta
         id: docker_action_meta
