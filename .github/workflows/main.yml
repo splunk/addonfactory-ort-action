@@ -54,7 +54,7 @@ jobs:
         id: docker_ort_meta
         uses: docker/metadata-action@v3
         with:
-          images: ghcr.io/splunk/addonfactory-sample-scanner
+          images: ghcr.io/splunk/addonfactory-ort-action
           tags: |
             type=ref,event=branch,suffix=-base
             type=ref,event=pr
@@ -62,9 +62,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern=v{{version}}
             type=semver,pattern=v{{major}}.{{minor}}
-            # minimal (short sha)
             type=sha
-            # full length sha
             type=sha,format=long
       - name: Build ort
         id: docker_base_build
@@ -80,7 +78,7 @@ jobs:
         id: docker_action_meta
         uses: docker/metadata-action@v3
         with:
-          images: ghcr.io/splunk/addonfactory-sample-scanner
+          images: ghcr.io/splunk/addonfactory-ort-action
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -88,6 +86,8 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern=v{{version}}
             type=semver,pattern=v{{major}}.{{minor}}
+            type=sha
+            type=sha,format=long            
       - name: Build and push
         id: docker_action_build
         uses: docker/build-push-action@v2
