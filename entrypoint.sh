@@ -17,7 +17,7 @@
 
 echo ::group::analyzer
 
-/opt/ort/bin/ort --INFO analyze -f JSON -i /workspace -o /workspace/.ort/analyzer/
+/opt/ort/bin/ort --info analyze -f JSON -i /workspace -o /workspace/.ort/analyzer/
 exitCode=$?
 
 echo "::endgroup::"
