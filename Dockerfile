@@ -18,5 +18,6 @@ FROM $BASEIMAGE
 
 
 COPY custom root/.ort
+COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
