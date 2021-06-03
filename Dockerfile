@@ -16,7 +16,7 @@
 ARG BASEIMAGE=ort
 FROM $BASEIMAGE
 
-RUN pip3 install -y virtualenv venv
+RUN pip3 install virtualenv venv
 RUN curl -L dephell.org/install | python3
 
 COPY custom root/.ort
