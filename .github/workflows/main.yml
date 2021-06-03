@@ -56,12 +56,12 @@ jobs:
         with:
           images: ghcr.io/splunk/addonfactory-ort-action
           tags: |
+            type=semver,pattern=v{{major}}.{{minor}},suffix=-base
+            type=semver,pattern=v{{version}},suffix=-base
+            type=semver,pattern={{major}}.{{minor}},suffix=-base
+            type=semver,pattern={{version}},suffix=-base
             type=ref,event=branch,suffix=-base
             type=ref,event=pr,suffix=-base
-            type=semver,pattern={{version}},suffix=-base
-            type=semver,pattern={{major}}.{{minor}},suffix=-base
-            type=semver,pattern=v{{version}},suffix=-base
-            type=semver,pattern=v{{major}}.{{minor}},suffix=-base
             type=sha
             type=sha,format=long
       - name: Build ort
