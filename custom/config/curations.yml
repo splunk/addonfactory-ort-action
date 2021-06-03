@@ -74,3 +74,63 @@
     declared_license_mapping:
       "BSD License": "BSD-2-Clause"
     homepage_url: "https://github.com/kjd/idna"
+- id: "PyPI::amqp"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::billiard"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::cached-property"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::celery"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::click"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::click-didyoumean"
+  curations:
+    declared_license_mapping:
+      "BSD License": "MIT"
+- id: "PyPI::click-plugins"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::kombu"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::lxml"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::prompt-toolkit"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-2-Clause"
+- id: "PyPI::pyasn1"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-2-Clause"
+- id: "PyPI::pycryptodomex"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::pysmi"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-2-Clause"
+- id: "PyPI::pysnmp"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::vine"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
