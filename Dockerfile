@@ -16,6 +16,7 @@
 ARG BASEIMAGE=ort
 FROM $BASEIMAGE
 
+RUN curl -L dephell.org/install | python3
 
 COPY custom root/.ort
 COPY entrypoint.sh /entrypoint.sh

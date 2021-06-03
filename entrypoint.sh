@@ -15,6 +15,19 @@
 #    limitations under the License.
 #   ######################################################################## export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
+cd /github/workspace/$INPUT_WORKDIR
+
+if [ -f "poetry.lock" ]; then
+    echo ::group::support poetry
+    dephell deps convert \
+        --from-path=pyproject.toml --from-format=poetry \
+        --to-path=Pipfile --to-format=pipfile
+    dephell deps convert \
+        --from-path=poetry.lock --from-format=poetrylock \
+        --to-path=Pipfile.lock --to-format=pipfilelock
+    echo "::endgroup::"
+fi
+
 echo ::group::analyzer
 rm -rf /github/workspace/$INPUT_WORKDIR/.ort/analyzer  || true
 rm -rf /github/workspace/$INPUT_WORKDIR/.ort/reports  || true
