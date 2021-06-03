@@ -16,10 +16,10 @@
 ARG BASEIMAGE=ort
 FROM $BASEIMAGE
 
-RUN sudo apt install software-properties-common ;\
-    sudo add-apt-repository ppa:deadsnakes/ppa ;\
-    sudo apt-get update ;\
-    sudo apt install python3.7 python3.8 python3.9 -y
+RUN apt install software-properties-common ;\
+    add-apt-repository ppa:deadsnakes/ppa ;\
+    apt-get update ;\
+    apt install python3.7 python3.8 python3.9 -y
 
 RUN pip3 install virtualenv dephell
 #RUN curl -L dephell.org/install | python3
