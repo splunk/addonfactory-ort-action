@@ -16,8 +16,8 @@
 ARG BASEIMAGE=ort
 FROM $BASEIMAGE
 
-RUN apt-get install curl python3-venv ;\
-    curl -L dephell.org/install | python3
+RUN apt-get -y install curl python3-venv
+RUN curl -L dephell.org/install | python3
 
 COPY custom root/.ort
 COPY entrypoint.sh /entrypoint.sh
