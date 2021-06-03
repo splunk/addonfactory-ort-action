@@ -20,4 +20,5 @@ FROM $BASEIMAGE
 COPY custom root/.ort
 COPY entrypoint.sh /entrypoint.sh
 
+WORKDIR /workspace
 ENTRYPOINT ["/entrypoint.sh"]
