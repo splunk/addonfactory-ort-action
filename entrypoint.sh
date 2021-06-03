@@ -16,9 +16,9 @@
 #   ######################################################################## export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 echo ::group::analyzer
-rm -rf ./.ort/analyzer  || true
-rm -rf ./.ort/reports  || true
-/opt/ort/bin/ort --info analyze -f JSON -i /workspace -o /workspace/.ort/analyzer/
+rm -rf /workspace/$INPUT_WORKDIR/.ort/analyzer  || true
+rm -rf /workspace/$INPUT_WORKDIR/.ort/reports  || true
+/opt/ort/bin/ort --info analyze -f JSON -i /workspace/$INPUT_WORKDIR/ -o /workspace/$INPUT_WORKDIR/.ort/analyzer/
 exitCode=$?
 
 echo "::endgroup::"
@@ -27,12 +27,12 @@ echo ::group::reports
 
 /opt/ort/bin/ort \
     report -f Excel,SpdxDocument,AsciiDocTemplate,NoticeTemplate \
-    --ort-file=/workspace/.ort/analyzer/analyzer-result.json \
-    -o /workspace/.ort/reports
+    --ort-file=/workspace/$INPUT_WORKDIR/.ort/analyzer/analyzer-result.json \
+    -o /workspace/$INPUT_WORKDIR/.ort/reports
 /opt/ort/bin/ort \
     report -f NoticeTemplate \
-    --ort-file=/workspace/.ort/analyzer/analyzer-result.json -O NoticeTemplate=template.id=summary\
-    -o /workspace/.ort/reports
+    --ort-file=/workspace/$INPUT_WORKDIR/.ort/analyzer/analyzer-result.json -O NoticeTemplate=template.id=summary\
+    -o /workspace/$INPUT_WORKDIR/.ort/reports
     
 echo "::endgroup::"
 
