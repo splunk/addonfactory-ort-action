@@ -27,11 +27,11 @@ echo ::group::reports
 
 /opt/ort/bin/ort \
     report -f Excel,SpdxDocument,AsciiDocTemplate,NoticeTemplate \
-    --ort-file=/workspace/$INPUT_WORKDIR/.ort/analyzer/analyzer-result.json \
+    --ort-file=/github/workspace/$INPUT_WORKDIR/.ort/analyzer/analyzer-result.json \
     -o /github/workspace/$INPUT_WORKDIR/.ort/reports
 /opt/ort/bin/ort \
     report -f NoticeTemplate \
-    --ort-file=/workspace/$INPUT_WORKDIR/.ort/analyzer/analyzer-result.json -O NoticeTemplate=template.id=summary\
+    --ort-file=/github/workspace/$INPUT_WORKDIR/.ort/analyzer/analyzer-result.json -O NoticeTemplate=template.id=summary\
     -o /github/workspace/$INPUT_WORKDIR/.ort/reports
     
 echo "::endgroup::"
