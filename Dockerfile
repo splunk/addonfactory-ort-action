@@ -16,8 +16,8 @@
 ARG BASEIMAGE=ort
 FROM $BASEIMAGE
 
-RUN pip3 install virtualenv
-RUN curl -L dephell.org/install | python3
+RUN pip3 install virtualenv dephell
+#RUN curl -L dephell.org/install | python3
 
 COPY custom root/.ort
 COPY entrypoint.sh /entrypoint.sh
