@@ -82,14 +82,14 @@ jobs:
         with:
           images: ghcr.io/splunk/addonfactory-ort-action
           tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-            type=semver,pattern=v{{version}}
             type=semver,pattern=v{{major}}.{{minor}}
             type=semver,pattern=v{{major}}
+            type=semver,pattern=v{{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=semver,pattern={{version}}
+            type=ref,event=branch
+            type=ref,event=pr
             type=sha
             type=sha,format=long
       - name: Build and push action
@@ -115,6 +115,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
   update-semver:
+    name: Move Respository semver tags
     if: startsWith(github.ref, 'refs/tags/v')
     needs: build_action
     runs-on: ubuntu-latest
