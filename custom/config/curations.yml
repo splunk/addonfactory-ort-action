@@ -132,7 +132,27 @@
   curations:
     declared_license_mapping:
       "BSD License": "BSD-3-Clause"
-- id: "PyPI::vine"
+- id: "PyPI::flask"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::flask-silk"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::itsdangerous"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::jinja2"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::markupsafe"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "PyPI::werkzeug"
   curations:
     declared_license_mapping:
       "BSD License": "BSD-3-Clause"
