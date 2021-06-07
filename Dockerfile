@@ -19,9 +19,13 @@ FROM $BASEIMAGE
 RUN apt install software-properties-common ;\
     add-apt-repository ppa:deadsnakes/ppa ;\
     apt-get update ;\
-    apt install python3.7 python3.8 python3.9 -y
+    apt install python3.7-full python3.8-full python3.9-full -y
 
-RUN pip3 install virtualenv=<20.3.0 dephell
+RUN curl https://bootstrap.pypa.io/get-pip.py | python3.7
+RUN curl https://bootstrap.pypa.io/get-pip.py | python3.8
+RUN pip3 install virtualenv==20.3.0 dephell
+RUN pip3.7 install virtualenv==20.3.0 dephell
+RUN pip3.8 install virtualenv==20.3.0 dephell
 
 COPY entrypoint.sh /entrypoint.sh
 
