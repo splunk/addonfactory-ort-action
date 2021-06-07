@@ -19,10 +19,16 @@ FROM $BASEIMAGE
 RUN apt install software-properties-common ;\
     add-apt-repository ppa:deadsnakes/ppa ;\
     apt-get update ;\
-    apt install python3.7-full python3.8-full python3.9-full -y
+    apt install python3.7-full python3.8-full python3.9-full python3.9-dev -y
 
-RUN curl https://bootstrap.pypa.io/get-pip.py | python3.7
-RUN curl https://bootstrap.pypa.io/get-pip.py | python3.8
+RUN pip3 install --upgrade setuptools ;\
+    pip3 install --upgrade pip ;\
+    pip3 install --upgrade distlib 
+RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py 
+
+RUN python3.7 /tmp/get-pip.py --upgrade setuptools
+RUN python3.8 /tmp/get-pip.py --upgrade setuptools
+RUN python3.9 /tmp/get-pip.py --upgrade setuptools
 RUN pip3 install virtualenv==20.3.0 dephell
 RUN pip3.7 install virtualenv==20.3.0 dephell
 RUN pip3.8 install virtualenv==20.3.0 dephell
