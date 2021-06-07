@@ -21,7 +21,7 @@ RUN apt install software-properties-common ;\
     apt-get update ;\
     apt install python3.7 python3.8 python3.9 -y
 
-RUN pip3 install virtualenv dephell
+RUN pip3 install virtualenv<=<20.3.0 dephell
 
 COPY entrypoint.sh /entrypoint.sh
 
