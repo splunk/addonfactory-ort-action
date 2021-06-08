@@ -156,3 +156,7 @@
   curations:
     declared_license_mapping:
       "BSD License": "BSD-3-Clause"
+- id: "PyPI::decorator"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"      
