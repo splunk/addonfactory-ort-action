@@ -17,16 +17,14 @@
 
 cd /github/workspace/$INPUT_WORKDIR
 #
+if [ -n "${USEPYTHON3}" ]; then update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${USEPYTHON3} 10; fi
+
 if [ -f "poetry.lock" ]; then
     echo ::group::support poetry
-    dephell deps convert \
-        --from-path=pyproject.toml --from-format=poetry \
-        --to-path=Pipfile --to-format=pipfile
-    dephell deps convert \
-        --from-path=poetry.lock --from-format=poetrylock \
-        --to-path=Pipfile.lock --to-format=pipfilelock
+    python3 -m poetry export -f requirements.txt --output requirements.txt
     echo "::endgroup::"
 fi
+
 
 echo ::group::analyzer
 rm -rf /github/workspace/$INPUT_WORKDIR/.ort/analyzer  || true

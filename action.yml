@@ -27,3 +27,6 @@ inputs:
     description: Set the scan directory relative to the project
     required: false
     default: .
+  UsePython3:
+    description: Set the version of python 3 ie (3.7,3.8,3.9)
+    required: false
