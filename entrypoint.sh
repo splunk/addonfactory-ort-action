@@ -22,7 +22,9 @@ if [ -f "poetry.lock" ]; then
     dephell deps convert \
         --from-path=pyproject.toml --from-format=poetry \
         --to-path=Pipfile --to-format=pipfile
-    pipenv lock
+    dephell deps convert \
+        --from-path=poetry.lock --from-format=poetrylock \
+        --to-path=Pipfile.lock --to-format=pipfilelock
     echo "::endgroup::"
 fi
 
