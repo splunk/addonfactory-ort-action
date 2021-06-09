@@ -17,7 +17,7 @@
 
 cd /github/workspace/$INPUT_WORKDIR
 #
-if [ -n "${USEPYTHON3}" ]; then update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${USEPYTHON3} 10; fi
+if [ -v "${USEPYTHON3}" ]; then update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${USEPYTHON3} 10; fi
 
 if [ -f "poetry.lock" ]; then
     echo ::group::support poetry
