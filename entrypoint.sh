@@ -15,12 +15,12 @@
 #    limitations under the License.
 #   ######################################################################## export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-source $HOME/.poetry/env
 cd /github/workspace/$INPUT_WORKDIR
 #
 if [ -v "${INPUT_USEPYTHON3}" ]; then update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${INPUT_USEPYTHON3} 10; fi
 
 if [ -f "poetry.lock" ]; then
+    source $HOME/.poetry/env
     echo ::group::support poetry
     python3 -m poetry export -f requirements.txt --output requirements.txt
     echo "::endgroup::"
