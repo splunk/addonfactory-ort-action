@@ -1,5 +1,5 @@
 ---
-- id: "PyPI::schematics:2.1.0"
+- id: "PyPI::schematics"
   curations:
     comment: >-
       (The BSD License)
@@ -34,7 +34,7 @@
     declared_license_mapping:
       "BSD License": "BSD-3-Clause"
     homepage_url: "https://github.com/schematics/schematics"
-- id: "PyPI::idna:2.10"
+- id: "PyPI::idna"
   curations:
     comment: >-
       BSD 3-Clause License
@@ -69,7 +69,7 @@
     declared_license_mapping:
       "BSD License": "BSD-3-Clause"
     homepage_url: "https://github.com/kjd/idna"
-- id: "PyPI::packaging:20.9"
+- id: "PyPI::packaging"
   curations:
     declared_license_mapping:
       "BSD License": "BSD-2-Clause"
