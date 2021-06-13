@@ -160,3 +160,24 @@
   curations:
     declared_license_mapping:
       "BSD License": "BSD-3-Clause"      
+- id: "PyPI::colorama"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"            
+- id: "PyPI::oauthlib"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"            
+- id: "PyPI::pyasn1-modules"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"            
+- id: "PyPI::requests-oauthlib"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"            
+- id: "PyPI::uritemplate"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+      "BSD 3-Clause License or Apache License, Version 2.0": "BSD-3-Clause"      
