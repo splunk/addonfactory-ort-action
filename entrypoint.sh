@@ -16,7 +16,7 @@
 #   ######################################################################## export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 source $HOME/.poetry/env
-cd /github/workspace/$INPUT_WORKDIR
+
 #
 if [ -z ${INPUT_USEPYTHON3+x} ]; then
     echo "Using Default Python"
@@ -33,9 +33,9 @@ fi
 
 
 echo ::group::analyzer
-rm -rf /github/workspace/$INPUT_WORKDIR/.ort/analyzer  || true
-rm -rf /github/workspace/$INPUT_WORKDIR/.ort/reports  || true
-/opt/ort/bin/ort --info analyze -f JSON -i /github/workspace/$INPUT_WORKDIR/ -o /github/workspace/$INPUT_WORKDIR/.ort/analyzer/
+rm -rf /github/workspace/.ort/analyzer  || true
+rm -rf /github/workspace/.ort/reports  || true
+/opt/ort/bin/ort --info analyze -f JSON -i /github/workspace/ -o /github/workspace/.ort/analyzer/ $INPUT_WORKDIR
 exitCode=$?
 
 echo "::endgroup::"
@@ -44,12 +44,12 @@ echo ::group::reports
 
 /opt/ort/bin/ort \
     report -f Excel,SpdxDocument,AsciiDocTemplate,NoticeTemplate \
-    --ort-file=/github/workspace/$INPUT_WORKDIR/.ort/analyzer/analyzer-result.json \
-    -o /github/workspace/$INPUT_WORKDIR/.ort/reports
+    --ort-file=/github/workspace/.ort/analyzer/analyzer-result.json \
+    -o /github/workspace/.ort/reports
 /opt/ort/bin/ort \
     report -f NoticeTemplate \
-    --ort-file=/github/workspace/$INPUT_WORKDIR/.ort/analyzer/analyzer-result.json -O NoticeTemplate=template.id=summary\
-    -o /github/workspace/$INPUT_WORKDIR/.ort/reports
+    --ort-file=/github/workspace/.ort/analyzer/analyzer-result.json -O NoticeTemplate=template.id=summary\
+    -o /github/workspace/.ort/reports
     
 echo "::endgroup::"
 
