@@ -35,7 +35,7 @@ fi
 echo ::group::analyzer
 rm -rf /github/workspace/.ort/analyzer  || true
 rm -rf /github/workspace/.ort/reports  || true
-/opt/ort/bin/ort --info analyze -f JSON -i /github/workspace/ -o /github/workspace/.ort/analyzer/ $INPUT_WORKDIR
+/opt/ort/bin/ort --info analyze -f JSON -i /github/workspace/ -o /github/workspace/.ort/analyzer/ -i /github/workspace/$INPUT_WORKDIR
 exitCode=$?
 
 echo "::endgroup::"
