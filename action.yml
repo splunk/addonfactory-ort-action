@@ -18,7 +18,7 @@ name: "Addon Factory ORT Addon"
 description: "Produce third party component reports"
 runs:
   using: "docker"
-  image: "docker://ghcr.io/splunk/addonfactory-ort-action:v1.4.8"
+  image: "docker://ghcr.io/splunk/addonfactory-ort-action:v1.4.9"
 inputs:
   args:
     description: Additional arguments to the scanner
