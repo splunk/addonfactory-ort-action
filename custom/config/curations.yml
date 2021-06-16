@@ -186,3 +186,7 @@
     declared_license_mapping:
       "BSD License": "BSD-3-Clause"
       "Dual License": "BSD-3-Clause"
+- id: "PyPI::vine"
+  curations:
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
