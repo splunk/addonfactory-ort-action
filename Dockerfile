@@ -32,8 +32,6 @@ RUN python3.9 /tmp/get-pip.py --upgrade setuptools
 RUN pip3 install virtualenv==20.2.2  pipenv poetry
 RUN pip3.7 install virtualenv==20.2.2 pipenv poetry
 RUN pip3.8 install virtualenv==20.2.2 pipenv poetry
-RUN pip3.7 install --user pipx; python3.7 -m pipx install pipenv
-RUN pip3.8 install --user pipx; python3.8 -m pipx install pipenv
 RUN pip3.9 install --user pipx; python3.9 -m pipx install pipenv
 
 COPY entrypoint.sh /entrypoint.sh
