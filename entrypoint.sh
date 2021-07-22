@@ -26,8 +26,9 @@ else
 fi
 
 if [ -f "poetry.lock" ]; then
+    ls req*.txt
     echo ::group::support poetry
-    poetry export -f requirements.txt --output requirements.txt
+    poetry export --without-hashes -f requirements.txt --output requirements.txt
     echo "::endgroup::"
 fi
 
