@@ -21,6 +21,7 @@ if [ -z ${INPUT_USEPYTHON3+x} ]; then
 else
     echo using python $INPUT_USEPYTHON3
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${INPUT_USEPYTHON3} 10
+    python3 --version
 fi
 
 if [ -f "poetry.lock" ]; then
