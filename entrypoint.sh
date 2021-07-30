@@ -15,8 +15,6 @@
 #    limitations under the License.
 #   ######################################################################## export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-source $HOME/.poetry/env
-
 #
 if [ -z ${INPUT_USEPYTHON3+x} ]; then
     echo "Using Default Python"
@@ -26,9 +24,9 @@ else
 fi
 
 if [ -f "poetry.lock" ]; then
-    ls req*.txt
     echo ::group::support poetry
     poetry export --without-hashes -f requirements.txt --output requirements.txt
+    ls req*.txt
     echo "::endgroup::"
 fi
 
