@@ -29,9 +29,9 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
 RUN python3.7 /tmp/get-pip.py --upgrade setuptools
 RUN python3.8 /tmp/get-pip.py --upgrade setuptools
 RUN python3.9 /tmp/get-pip.py --upgrade setuptools
-RUN pip3 install virtualenv==20.2.2  pipenv poetry
-RUN pip3.7 install virtualenv==20.2.2 pipenv poetry
-RUN pip3.8 install virtualenv==20.2.2 pipenv poetry
+RUN pip3 install pip==18.0 pipdeptree==0.13.2 virtualenv==20.2.2  pipenv poetry
+RUN pip3.7 install pip==18.0 pipdeptree==0.13.2 virtualenv==20.2.2 pipenv poetry
+RUN pip3.8 install pip==18.0 pipdeptree==0.13.2 virtualenv==20.2.2 pipenv poetry
 RUN pip3.9 install --user pipx; python3.9 -m pipx install pipenv
 
 COPY entrypoint.sh /entrypoint.sh
