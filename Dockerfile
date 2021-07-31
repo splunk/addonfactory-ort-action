@@ -16,18 +16,18 @@
 ARG BASEIMAGE=ort
 FROM $BASEIMAGE
 
-RUN apt install -y software-properties-common ;\
+RUN apt install software-properties-common ;\
     add-apt-repository ppa:deadsnakes/ppa ;\
     apt-get update ;\
-    apt install \
-    python3.7 python3.7-dev python3.7-venv \
-    python3.8 python3.8-dev python3.8-venv \
-    python3.9 python3.9-dev python3.9-venv
+    apt install -y \
+        python3.7 python3.7-dev python3.7-venv \
+        python3.8 python3.8-dev python3.8-venv \
+        python3.9 python3.9-dev python3.9-venv 
 
 RUN pip3 install --upgrade setuptools ;\
     pip3 install --upgrade pip ;\
-    pip3 install --upgrade distlib ;\ 
-    curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py 
+    pip3 install --upgrade distlib 
+RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py 
 
 RUN python3.7 /tmp/get-pip.py --upgrade setuptools
 RUN python3.8 /tmp/get-pip.py --upgrade setuptools
