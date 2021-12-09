@@ -22,7 +22,7 @@ RUN apt install software-properties-common ;\
     apt install -y \
         python3.7 python3.7-dev python3.7-venv \
         python3.8 python3.8-dev python3.8-venv \
-        python3.9 python3.9-dev python3.9-venv 
+        python3.9 python3.9-dev python3.9-venv
 
 RUN pip3 install --upgrade setuptools ;\
     pip3 install --upgrade pip ;\
@@ -36,6 +36,14 @@ RUN pip3 install pip==18.0 pipdeptree==0.13.2 virtualenv==20.2.2  pipenv poetry
 RUN pip3.7 install pip==18.0 pipdeptree==0.13.2 virtualenv==20.2.2 pipenv poetry
 RUN pip3.8 install pip==18.0 pipdeptree==0.13.2 virtualenv==20.2.2 pipenv poetry
 RUN pip3.9 install --user pipx; python3.9 -m pipx install pipenv
+
+# Upgrade pip version for each Python version.
+# This seems to be fixing 
+# `pip install fails with "No such file or directory: 'c++': 'c++'"`
+# error when trying to install `grpcio` library.
+RUN python3.7 -m pip install --upgrade pip \
+    python3.8 -m pip install --upgrade pip \
+    python3.9 -m pip install --upgrade pip
 
 COPY entrypoint.sh /entrypoint.sh
 
