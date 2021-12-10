@@ -41,9 +41,9 @@ RUN pip3.9 install --user pipx; python3.9 -m pipx install pipenv
 # This seems to be fixing 
 # `pip install fails with "No such file or directory: 'c++': 'c++'"`
 # error when trying to install `grpcio` library.
-RUN python3.7 -m pip install --upgrade pip \
-    python3.8 -m pip install --upgrade pip \
-    python3.9 -m pip install --upgrade pip
+RUN python3.7 -m pip install --upgrade pip
+RUN python3.8 -m pip install --upgrade pip
+RUN python3.9 -m pip install --upgrade pip
 
 COPY entrypoint.sh /entrypoint.sh
 
