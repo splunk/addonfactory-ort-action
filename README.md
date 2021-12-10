@@ -2,10 +2,9 @@
 
 This action scans a project for third party components and reports the results. This action contains a curation file managed by Splunk Inc. Source is provided for this action however it may not be useful outside of our organization.
 
+[Forked version](https://github.com/splunk/ort) of `ort` is being used. The only difference is this [commit](https://github.com/splunk/ort/commit/78a98b8811fb4051dc18010bdda1bf09075bdf37) which assumes that the repository's it is scanning is Python 3 and will not fallback to Python 2 in case of any errors.
 
 # v1
-
-This release adds reliability for pulling node distributions from a cache of node releases.
 
 ```yaml
 steps:
@@ -20,8 +19,6 @@ steps:
         name: analysis
         path: .ort/
 ```
-
-The action will check tests/knowledge/* for potentialy identifying data and update the build or pr with annotations identifying violations.
 
 # License
 
