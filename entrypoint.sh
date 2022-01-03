@@ -43,19 +43,13 @@ echo "::endgroup::"
 echo ::group::reports
 
 /opt/ort/bin/ort \
-    report -f Excel,SpdxDocument,NoticeTemplate \
+    report -f Excel,SpdxDocument,PdfTemplate,NoticeTemplate \
     --ort-file=/github/workspace/.ort/analyzer/analyzer-result.json \
     -o /github/workspace/.ort/reports
 /opt/ort/bin/ort \
     report -f NoticeTemplate \
     --ort-file=/github/workspace/.ort/analyzer/analyzer-result.json -O NoticeTemplate=template.id=summary\
     -o /github/workspace/.ort/reports
-/opt/ort/bin/ort \
-    report -f PdfTemplate \
-    --ort-file=/github/workspace/.ort/analyzer/analyzer-result.json \
-    -o /github/workspace/.ort/reports \
-    --report-option PdfTemplate=template.id=[template-id] \
-    --report-option PdfTemplate=pdf.theme.file=pdf-theme.yml
     
 echo "::endgroup::"
 
