@@ -16,7 +16,7 @@
 ARG BASEIMAGE=ort
 FROM $BASEIMAGE
 
-RUN apt install software-properties-common ;\
+RUN apt install software-properties-common build-essential;\
     add-apt-repository ppa:deadsnakes/ppa ;\
     apt-get update ;\
     apt install -y \
