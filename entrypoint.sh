@@ -42,7 +42,7 @@ echo "::endgroup::"
 
 echo ::group::reports
 
-report_types=("Excel" "SpdxDocument" "AsciiDocTemplate" "NoticeTemplate")
+report_types=("Excel" "SpdxDocument" "PdfTemplate" "NoticeTemplate")
 for report_type in ${report_types[@]}; do
     /opt/ort/bin/ort \
         report -f $report_type \
