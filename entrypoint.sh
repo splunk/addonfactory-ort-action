@@ -42,10 +42,14 @@ echo "::endgroup::"
 
 echo ::group::reports
 
-/opt/ort/bin/ort \
-    report -f Excel,SpdxDocument,AsciiDocTemplate,NoticeTemplate \
-    --ort-file=/github/workspace/.ort/analyzer/analyzer-result.json \
-    -o /github/workspace/.ort/reports
+report_types=("ExcelSpdxDocument" "AsciiDocTemplate" "NoticeTemplate")
+for report_type in ${report_types[@]}; do
+    /opt/ort/bin/ort \
+        report -f $report_type \
+        --ort-file=/github/workspace/.ort/analyzer/analyzer-result.json \
+        -o /github/workspace/.ort/reports
+done
+
 /opt/ort/bin/ort \
     report -f NoticeTemplate \
     --ort-file=/github/workspace/.ort/analyzer/analyzer-result.json -O NoticeTemplate=template.id=summary\
