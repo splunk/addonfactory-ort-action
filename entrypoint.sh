@@ -43,7 +43,7 @@ echo "::endgroup::"
 echo ::group::reports
 
 /opt/ort/bin/ort \
-    report -f Excel,SpdxDocument,AsciiDocTemplate,NoticeTemplate \
+    report -f Excel,SpdxDocument,PdfTemplate,NoticeTemplate \
     --ort-file=/github/workspace/.ort/analyzer/analyzer-result.json \
     -o /github/workspace/.ort/reports
 /opt/ort/bin/ort \
